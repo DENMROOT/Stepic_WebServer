@@ -17,6 +17,7 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
 
@@ -27,12 +28,12 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <outputDirectory>${basedir}</outputDirectory>
+                    <outputDirectory>E:\PROGRAMMING\IntellijIDEA\Projects\StepicWebServer\TEST\HW01\</outputDirectory>
                     <finalName>server</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>ServerMain</mainClass>
+                            <mainClass>com.denm.server.ServerMain</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -41,6 +42,11 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.13</version>
+        </dependency>
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
@@ -61,6 +67,7 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
             <version>9.3.6.v20151106</version>
+            <scope>provided</scope>
         </dependency>
 
 
