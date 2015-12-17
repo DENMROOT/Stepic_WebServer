@@ -3,7 +3,7 @@
 
 ## Directory-based project format:
 .idea/
-.TEST/
+TEST/
 
 # Maven
 log/
