@@ -1,6 +1,7 @@
 package com.denm.server;
 
-import com.denm.server.servlet.AllRequestServlet;
+import com.denm.server.servlet.SigninRequestServlet;
+import com.denm.server.servlet.SignupRequestServlet;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -15,10 +16,12 @@ public class ServerMain {
 
     public static void main(String[] args) throws Exception {
         logger.info("Server started");
-        AllRequestServlet allRequestsServlet = new AllRequestServlet();
+        SignupRequestServlet signupServlet = new SignupRequestServlet();
+        SigninRequestServlet signinServlet = new SigninRequestServlet();
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(allRequestsServlet), "/mirror/*");
+        context.addServlet(new ServletHolder(signupServlet), "/signup");
+        context.addServlet(new ServletHolder(signinServlet), "/signin");
 
         Server server = new Server(8080);
         server.setHandler(context);

@@ -28,7 +28,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <outputDirectory>E:\PROGRAMMING\IntellijIDEA\Projects\StepicWebServer\TEST\HW01\</outputDirectory>
+                    <outputDirectory>E:\PROGRAMMING\IntellijIDEA\Projects\StepicWebServer\TEST\HW02\</outputDirectory>
                     <finalName>server</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
@@ -67,7 +67,6 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
             <version>9.3.6.v20151106</version>
-            <scope>provided</scope>
         </dependency>
 
 
