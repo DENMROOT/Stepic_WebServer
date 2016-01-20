@@ -1,5 +1,6 @@
 package com.denm.server.servlet;
 
+import com.denm.server.exception.DBException;
 import com.denm.server.service.AuthenticationService;
 import com.denm.server.service.AuthenticationServiceImpl;
 import com.denm.server.templater.PageGenerator;
@@ -31,7 +32,11 @@ public class SignupRequestServlet extends HttpServlet {
         if (login == null || login.isEmpty() || password == null || password.isEmpty()) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         } else {
-            authService.storeCredentials(login, password);
+            try {
+                authService.storeCredentials(login, password);
+            } catch (DBException e) {
+                logger.info("Unexpected DB error: "  + e.getMessage());
+            }
         }
 
         Map<String, Object> pageVariables = createPageVariablesMap(request);
