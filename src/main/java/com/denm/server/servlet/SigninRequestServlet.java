@@ -1,5 +1,6 @@
 package com.denm.server.servlet;
 
+import com.denm.server.exception.DBException;
 import com.denm.server.service.AuthenticationService;
 import com.denm.server.service.AuthenticationServiceImpl;
 import com.denm.server.templater.PageGenerator;
@@ -32,12 +33,16 @@ public class SigninRequestServlet extends HttpServlet {
         if (login == null || login.isEmpty() || password == null || password.isEmpty()) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         } else {
-            if (authService.authenticate(login, password)) {
-                message = "Authorized";
-                response.setStatus(HttpServletResponse.SC_OK);
-            } else {
-                message = "Unauthorized";
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            try {
+                if (authService.authenticate(login, password)) {
+                    message = "Authorized";
+                    response.setStatus(HttpServletResponse.SC_OK);
+                } else {
+                    message = "Unauthorized";
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                }
+            } catch (DBException e) {
+                logger.info("Unexpected DB error: "  + e.getMessage());
             }
 
         }
