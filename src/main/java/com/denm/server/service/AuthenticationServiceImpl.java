@@ -40,7 +40,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public boolean authenticate(String login, String password) throws DBException {
         logger.info("Authenticating user: login=" + login + ", password=" + password);
         long userId = dbService.getUserId(login);
-        User user = dbService.getUser(dbService.getUserId(login));
+        User user = dbService.getUser(userId);
         return user != null && user.getPassword().equals(password);
     }
 }
